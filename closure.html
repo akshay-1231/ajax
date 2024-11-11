@@ -1,0 +1,15 @@
+<script>
+    function f1(){          //f1--parent function
+        var x=10;
+        function f2(){        //f2--nested function
+            var y=20;
+            function f3(){
+                console.log(x+y);
+            }
+            f3();
+        }
+        f2();
+
+    }
+    f1();
+</script>

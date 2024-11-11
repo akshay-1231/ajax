@@ -1,0 +1,57 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<div class="cobtainer text-center">
+    <div class="col-3">
+        <h4>captch</h4>
+        <div id="captcha-display" style="font-size: 30px; font-weight: bold;"></div>
+        <input type="text" name="" id="reload">
+        <button id="reload">ReloadCAPTCH</button>
+    </div>
+</div>
+<div class="col-3">
+    <h2>captch answer</h2>
+    <input type="text" name="" id="check">
+    <button id="checkresponse">check answer</button>
+    <P>response</P>
+</div>
+
+
+<script>
+    // Function to generate a random CAPTCHA
+    function generateCaptcha() {
+        const characters = '0123456789';
+        let captcha = '';
+        for (let i = 0; i < 6; i++) {
+            captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return captcha;
+    }
+
+    // Variable to hold the current CAPTCHA
+    let currentCaptcha = generateCaptcha();
+
+    // Display the CAPTCHA in the DOM
+    function displayCaptcha() {
+        $('#captcha-display').text(currentCaptcha);
+    }
+
+    // Reload the CAPTCHA
+    $('#reload').click(function() {
+        currentCaptcha = generateCaptcha();
+        displayCaptcha();
+        $('#check').val(''); // Clear the input field
+        $('#checkresponse').text(''); // Clear any previous response
+    });
+
+    // Check the user's answer
+    $('#checkanswer').click(function() {
+        const userAnswer = $('#check').val();
+        if (userAnswer === currentCaptcha) {
+            $('#checkresponse').text('Correct!').css('color', 'green');
+        } else {
+            $('#checkresponse').text('Incorrect, please try again.').css('color', 'red');
+        }
+    });
+
+    // Initially display a CAPTCHA
+    displayCaptcha();
+</script>

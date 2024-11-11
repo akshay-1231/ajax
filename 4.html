@@ -1,0 +1,28 @@
+<input type="date" name="" id="x1">
+<button>Get</button>
+<p></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('button').click(function(){
+           // alert('date');
+           var record= $("#x1").val();
+           console.log(record);
+           var res=record.split("-");
+           console.log(res[0]);
+
+           var dateobject =new Date();
+           console.log(dateobject);
+
+           var currentyear =dateobject.getFullYear();
+           console.log(currentyear);
+
+           var age= currentyear-res[0];
+
+           $('p').html('your age is'+age);
+        });
+
+    });
+</script>
